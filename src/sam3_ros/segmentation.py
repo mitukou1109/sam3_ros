@@ -13,17 +13,13 @@ class Segmentation(rclpy.node.Node):
         super().__init__("segmentation")
 
         use_compressed_image = (
-            self.declare_parameter("use_compressed_image", True)
-            .get_parameter_value()
-            .bool_value
+            self.declare_parameter("use_compressed_image", True).get_parameter_value().bool_value
         )
         self.text_prompt = (
             self.declare_parameter("text_prompt", "").get_parameter_value().string_value
         )
         confidence_threshold = (
-            self.declare_parameter("confidence_threshold", 0.5)
-            .get_parameter_value()
-            .double_value
+            self.declare_parameter("confidence_threshold", 0.5).get_parameter_value().double_value
         )
 
         self.model = sam3.build_sam3_image_model()
